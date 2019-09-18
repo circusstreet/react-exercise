@@ -7,5 +7,5 @@ export default ({disabled, label, click}) => {
   {'inactive': disabled} // when item.status = disabled
  );
 
-return <button className={style} onClick={click} >{label}</button>
+return <button className={style} onClick={click} disabled={disabled} >{label}</button>
 }
