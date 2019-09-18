@@ -1,0 +1,105 @@
+@import './mixins.scss';
+@import './variables.scss';
+
+body{
+  padding: 20px;
+  font-family: Helvetica, Arial;
+}
+
+h3 {
+  &.label {
+    margin: 0;
+    font-weight: 800;
+  }
+}
+
+button {
+  &.submit {
+    @include button;
+  }
+
+  &.inactive {
+    background-color: $buttonColorDisabled;
+  }
+}
+
+.items{
+  @include padding(15px,0);
+}
+
+.item {
+  @include padding(5px,0);
+}
+
+
+// check box wrappper
+.container {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// hide default input
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+// custom checkbox
+.custom-checkbox {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  height: 13px;
+  width: 13px;
+  border: 1px solid $gray;
+  border-radius: 4px;
+}
+
+
+// change style when checkbox is disabled
+.container input:checked:disabled ~ .custom-checkbox {
+  background-color: $white;
+
+  &:after {
+    border: solid $gray;
+    border-width: 0 2px 2px 0;
+  }
+}
+
+// add blue background when checked
+.container input:checked ~ .custom-checkbox {
+  background-color: $selected;
+}
+
+// hide the tick when not checked
+.custom-checkbox:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+// show the tick when checked
+.container input:checked ~ .custom-checkbox:after {
+  display: block;
+}
+
+// custom tick default style
+.container .custom-checkbox:after {
+  left: 5px;
+  top: 1px;
+  width: 2px;
+  height: 8px;
+  border: solid $white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(35deg);
+}

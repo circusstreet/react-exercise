@@ -1,21 +1,17 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import SelectedLessons from './SelectedLessons.component'
-import './styles.scss'
-import reducer from './reducer'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
 
-const store = createStore(
-  reducer, 
-  {}, 
-  applyMiddleware(thunk)
-)
+import { Provider } from 'react-redux'
+
+import Items from './components/Items.component'
+
+import './styles/styles.scss'
+
+import store from './store'
 
 render(
   <Provider store={store}>
-    <SelectedLessons />
+    <Items />
   </Provider>,
   document.getElementById('root')
 )

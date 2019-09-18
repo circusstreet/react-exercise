@@ -1,0 +1,12 @@
+@mixin button {
+  background-color: $buttonColor;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+@mixin padding($updown:5, $leftright:0) {
+  padding: $updown $leftright;
+}
