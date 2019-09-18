@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moize from 'moize'
 import {
-  updateItems
+  updateItems,
+  updateSelectedItemsLIst
 } from '../actions'
 
 import {
@@ -16,28 +17,25 @@ import Button from './Button.component'
 import Label from './Label.component'
 
 class Items extends Component {
-  state = {
-    selectedItemIds:[]
-  }
-
   handleSelect = (event) => {
-    const {selectedItemIds} = this.state
+    const {selectedItemsId} = this.props
     const id = event.target.id;
 
-    if(selectedItemIds.includes(id)){
-      const idsWithoutSelected = selectedItemIds.filter(item => item !== id)
-      this.setState({selectedItemIds: idsWithoutSelected})
+    if(selectedItemsId.includes(id)){
+      const idsWithoutTheSelected = selectedItemsId.filter(item => item !== id)
+      //dispatch updte the selected itms list
+      this.props.updateSelectedItemsLIst(idsWithoutTheSelected)
     }else {
-      this.setState({selectedItemIds: [...selectedItemIds, id]})
+      //dispatch updte the selected itms list
+      this.props.updateSelectedItemsLIst([...selectedItemsId, id])
     }
   }
 
   handleClick = (event) => {
-    const {selectedItemIds} = this.state
-    const {items} = this.props
+    const {items, selectedItemsId} = this.props
 
     // dispatch action updateItems
-    this.props.updateItems(selectedItemIds, items)
+    this.props.updateItems(selectedItemsId, items)
   }
 
   render(){
@@ -75,7 +73,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateItems: (selectedItemIds, items) => dispatch(updateItems(selectedItemIds, items)),
+    updateItems: (selectedItemsId, items) => dispatch(updateItems(selectedItemsId, items)),
+    updateSelectedItemsLIst: (list) => dispatch(updateSelectedItemsLIst(list))
   }
 }
 

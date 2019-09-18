@@ -2,6 +2,7 @@ import {
   LOAD_ITEMS,
   UPDATE_ITEMS_REQUEST,
   UPDATE_ITEMS_SUCCESS,
+  UPDATE_SELECTED_ITEMS_LIST
 } from '../actionTypes'
 
 import items from '../dummy_data/all-lessons.json'
@@ -25,6 +26,12 @@ export default (state = initState, action) => {
         ...state,
         items: action.data,
         isLoading: action.isLoading
+      }
+    case UPDATE_SELECTED_ITEMS_LIST:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+        selectedItemsId: action.selectedItemsId
       }
     default:
       return state

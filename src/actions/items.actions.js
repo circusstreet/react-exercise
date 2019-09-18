@@ -2,6 +2,7 @@ import {
   LOAD_ITEMS,
   UPDATE_ITEMS_REQUEST,
   UPDATE_ITEMS_SUCCESS,
+  UPDATE_SELECTED_ITEMS_LIST
 } from '../actionTypes'
 
 import {API_ENDPOINT} from '../constants'
@@ -37,6 +38,15 @@ export const updateItemsSuccess = items => {
     isLoading: false,
     data: toggleItemsStatus(items, 'enabled'),
     type: UPDATE_ITEMS_SUCCESS
+  }
+}
+
+
+export const updateSelectedItemsLIst = list => {
+  return {
+    isLoading: false,
+    selectedItemsId: list,
+    type: UPDATE_SELECTED_ITEMS_LIST
   }
 }
 
