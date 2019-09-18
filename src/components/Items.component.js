@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import moize from 'moize'
 import {
@@ -15,8 +14,6 @@ import {
 import Item from './Item.component'
 import Button from './Button.component'
 import Label from './Label.component'
-
-import helper from '../helpers'
 
 class Items extends Component {
   state = {
